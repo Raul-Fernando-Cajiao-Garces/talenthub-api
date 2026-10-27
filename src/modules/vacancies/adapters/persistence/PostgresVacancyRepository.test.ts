@@ -8,7 +8,9 @@ import { PostgresVacancyRepository } from './PostgresVacancyRepository';
 
 const sampleVacancy = { title: 'QA Tester', company: 'Tech Andes', modality: 'remoto', salary: 800 };
 
-describe('PostgresVacancyRepository', () => {
+const describeIfDb = process.env.TEST_DATABASE_URL ? describe : describe.skip;
+
+describeIfDb('PostgresVacancyRepository', () => {
   let pool: Pool;
   let repository: PostgresVacancyRepository;
 
